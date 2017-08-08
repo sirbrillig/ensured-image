@@ -44,7 +44,7 @@ The `EnsuredImage` component accepts many props common to `img` components, incl
 - `alt`
 - `id`
 - `sizes`
-- `srcset`
+- `srcSet`
 - `title`
 
 It also includes a few special props:

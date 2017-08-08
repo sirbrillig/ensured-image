@@ -60,10 +60,10 @@ describe( 'EnsuredImage', function() {
 		expect( wrapper.find( ImageComponent ) ).to.have.prop( 'alt', 'foobar' );
 	} );
 
-	it( 'passes srcset on to the image', function() {
+	it( 'passes srcSet on to the image', function() {
 		const ImageComponent = ( { src } ) => el( 'img', { src } );
-		const wrapper = shallow( el( EnsuredImage, { ImageComponent, src: 'my-test-image.png', srcset: 'foobar' } ) );
-		expect( wrapper.find( ImageComponent ) ).to.have.prop( 'srcset', 'foobar' );
+		const wrapper = shallow( el( EnsuredImage, { ImageComponent, src: 'my-test-image.png', srcSet: 'foobar' } ) );
+		expect( wrapper.find( ImageComponent ) ).to.have.prop( 'srcSet', 'foobar' );
 	} );
 
 	it( 'passes sizes on to the image', function() {

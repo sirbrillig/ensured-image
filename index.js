@@ -25,12 +25,12 @@ class EnsuredImage extends React.Component {
 	}
 
 	render() {
-		const { src, retryAfter, className, onClick, alt, id, sizes, srcset, title } = this.props;
+		const { src, retryAfter, className, onClick, alt, id, sizes, srcSet, title } = this.props;
 		if ( this.state.didLoadFail ) {
 			return el( this.props.PlaceholderComponent );
 		}
 		const onError = () => this.handleFailedImage( retryAfter );
-		return el( this.props.ImageComponent, { src, onError, className, onClick, alt, id, sizes, srcset, title } );
+		return el( this.props.ImageComponent, { src, onError, className, onClick, alt, id, sizes, srcSet, title } );
 	}
 }
 
@@ -43,7 +43,7 @@ EnsuredImage.propTypes = {
 	alt: PropTypes.string,
 	id: PropTypes.string,
 	sizes: PropTypes.string,
-	srcset: PropTypes.string,
+	srcSet: PropTypes.string,
 	title: PropTypes.string,
 	// Special props
 	retryAfter: PropTypes.number,
@@ -59,7 +59,7 @@ EnsuredImage.defaultProps = {
 	PlaceholderComponent,
 };
 
-function ImageComponent( { src, onError, className, onClick, alt, id, sizes, srcset, title } ) {
+function ImageComponent( { src, onError, className, onClick, alt, id, sizes, srcSet, title } ) {
 	return el( 'img', {
 		className,
 		src,
@@ -68,7 +68,7 @@ function ImageComponent( { src, onError, className, onClick, alt, id, sizes, src
 		alt,
 		id,
 		sizes,
-		srcset,
+		srcSet,
 		title
 	} );
 }
