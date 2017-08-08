@@ -21,20 +21,31 @@ class EnsuredImage extends React.Component {
 	handleFailedImage( retryAfter ) {
 		this.setState( { didLoadFail: true } );
 		this.props.setTimeout( this.retryImage, retryAfter );
+		this.props.onError && this.props.onError();
 	}
 
 	render() {
-		const { src, retryAfter } = this.props;
+		const { src, retryAfter, className, onClick, alt, id, sizes, srcset, title } = this.props;
 		if ( this.state.didLoadFail ) {
 			return el( this.props.PlaceholderComponent );
 		}
 		const onError = () => this.handleFailedImage( retryAfter );
-		return el( this.props.ImageComponent, { src, onError } );
+		return el( this.props.ImageComponent, { src, onError, className, onClick, alt, id, sizes, srcset, title } );
 	}
 }
 
 EnsuredImage.propTypes = {
+	// img props
 	src: PropTypes.string.isRequired,
+	className: PropTypes.string,
+	onClick: PropTypes.func,
+	onError: PropTypes.func,
+	alt: PropTypes.string,
+	id: PropTypes.string,
+	sizes: PropTypes.string,
+	srcset: PropTypes.string,
+	title: PropTypes.string,
+	// Special props
 	retryAfter: PropTypes.number,
 	setTimeout: PropTypes.func,
 	ImageComponent: PropTypes.func,
@@ -48,14 +59,24 @@ EnsuredImage.defaultProps = {
 	PlaceholderComponent,
 };
 
-function ImageComponent( { src, onError } ) {
-	return el( 'img', { className: 'reloadable-image', src, onError } );
+function ImageComponent( { src, onError, className, onClick, alt, id, sizes, srcset, title } ) {
+	return el( 'img', {
+		className,
+		src,
+		onError,
+		onClick,
+		alt,
+		id,
+		sizes,
+		srcset,
+		title
+	} );
 }
 
 function PlaceholderComponent() {
 	return el(
 		'svg',
-		{ className: 'placeholder-image', width: '33', height: '33' },
+		{ width: '33', height: '33' },
 		el( 'circle', { cx: '16', cy: '16', r: '15', fill: 'orange' } )
 	);
 }
