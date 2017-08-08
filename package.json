@@ -1,5 +1,5 @@
 {
-  "name": "ensured-image",
+  "name": "@sirbrillig/ensured-image",
   "version": "1.0.0",
   "description": "React component to reload an image if it fails.",
   "main": "index.js",
